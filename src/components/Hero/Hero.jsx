@@ -1,5 +1,5 @@
 import React from 'react'
-import {ImageComponent} from '../features/ImageComponent'
+import ErrorSafeImage from '../ErrorSafeImage/ErrorSafeImage'
 
 const Hero = ({title, prose, imageURI}) => {
 	return (
@@ -12,7 +12,7 @@ const Hero = ({title, prose, imageURI}) => {
 					<p className='mb-8 leading-relaxed'>{prose}</p>
 				</div>
 				<div className='lg:max-w-lg lg:w-full md:w-1/2 w-5/6'>
-					<ImageComponent
+					<ErrorSafeImage
 						className='shadow rounded-tl-[25px] rounded-br-[25px]'
 						altText={title}
 						srcURI={imageURI}

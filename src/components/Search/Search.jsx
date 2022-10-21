@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import {ImageGallery} from './ImageGallery'
+import ImageGallery from '../ImageGallery/ImageGallery'
 
-export const Search = () => {
+const Search = () => {
 	/**
 	 * We want to keep a brief history of the query text that the user has entered.
 	 * This is because we are rendering the search terms conditionally after submission.
@@ -80,3 +80,5 @@ export const Search = () => {
 		</>
 	)
 }
+
+export default Search

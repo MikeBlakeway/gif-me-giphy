@@ -1,5 +1,5 @@
 import {renderHook} from '@testing-library/react-hooks'
-import useFetchOnRender from './useFetchOnRender'
+import useFetchOnRender from '../useFetchOnRender'
 
 // cleanup any global fetch mocks after each and all tests
 afterEach(() => {

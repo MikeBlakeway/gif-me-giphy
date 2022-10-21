@@ -1,8 +1,7 @@
 import React from 'react'
-import {act} from 'react-dom/test-utils'
 import {render, screen} from '@testing-library/react'
-import Home from '../Home'
-import {giphyResponse} from '../../mock/giphy-search.response'
+import HomePage from './HomePage'
+import {giphyResponse} from '../../../mock/giphy-search.response'
 
 // setup a DOM element as a render target
 let container
@@ -23,7 +22,7 @@ const mockResolved = {
 	error: '',
 }
 
-it('renders Home', async () => {
+it('renders HomePage', async () => {
 	//  set mock data for fetch responses
 	jest.spyOn(global, 'fetch').mockImplementation(() =>
 		Promise.resolve({
@@ -31,7 +30,7 @@ it('renders Home', async () => {
 		})
 	)
 
-	await render(<Home />)
+	await render(<HomePage />)
 
 	// find a gif image that has been rendered
 	const gifImageTitle = await screen.findByText('Scared Dog GIF')

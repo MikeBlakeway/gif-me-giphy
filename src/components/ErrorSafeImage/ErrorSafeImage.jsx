@@ -1,8 +1,8 @@
 import React from 'react'
-import {onImageError} from '../utils/onImageError'
-import ErrorImage from '../assets/blank-profile-picture.jpeg'
+import onImageError from './scripts/onImageError'
+import ErrorImage from './images/blank-profile-picture.jpeg'
 
-export const ImageComponent = ({
+const ErrorSafeImage = ({
 	srcURI,
 	altText,
 	className = 'w-full aspect-video',
@@ -30,3 +30,5 @@ export const ImageComponent = ({
 
 	return returnedImage
 }
+
+export default ErrorSafeImage

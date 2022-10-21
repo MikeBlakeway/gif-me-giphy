@@ -1,9 +1,11 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
-import {ImageComponent} from '../features/ImageComponent'
-import useFetchOnRender from '../hooks/useFetchOnRender'
 
-export const SingleGif = () => {
+import useFetchOnRender from '../../hooks/useFetchOnRender'
+
+import ErrorSafeImage from '../../components/ErrorSafeImage/ErrorSafeImage'
+
+export const SingleGifPage = () => {
 	const {id} = useParams()
 	const imageEndpoint = `https://api.giphy.com/v1/gifs/${id}?api_key=frBBtYTudXylTnbq5jO5taWbE16cMhIb`
 
@@ -16,7 +18,7 @@ export const SingleGif = () => {
 					<div className='grid place-items-center w-full'>
 						{data && (
 							<div className='card flex flex-col items-center justify-center p-4'>
-								<ImageComponent
+								<ErrorSafeImage
 									className='rounded-full shadow-md w-20'
 									srcURI={data.user?.avatar_url}
 									altText={data.user?.display_name}
@@ -51,7 +53,7 @@ export const SingleGif = () => {
 								</ul>
 							</a>
 							<div className='relative flex content-center'>
-								<ImageComponent
+								<ErrorSafeImage
 									altText={data.title}
 									srcURI={data.images.original.url}
 									className='w-full aspect-video shadow rounded-tl-[25px] rounded-br-[25px]'
@@ -65,4 +67,4 @@ export const SingleGif = () => {
 	)
 }
 
-export default SingleGif
+export default SingleGifPage

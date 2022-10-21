@@ -1,9 +1,11 @@
 import React from 'react'
-import {Search, ImageGallery} from '../features'
-import useFetchOnRender from '../hooks/useFetchOnRender'
-import {Hero} from '../layout'
+import useFetchOnRender from '../../hooks/useFetchOnRender'
 
-export const Home = () => {
+import Hero from '../../components/Hero/Hero'
+import Search from '../../components/Search/Search'
+import ImageGallery from '../../components/ImageGallery/ImageGallery'
+
+export const HomePage = () => {
 	// we are listing a standard url for fetching trending gifs from GiphyAPI
 	const trendingGifURI =
 		'https://api.giphy.com/v1/gifs/trending?api_key=frBBtYTudXylTnbq5jO5taWbE16cMhIb&limit=9&rating=g'
@@ -43,4 +45,4 @@ export const Home = () => {
 	)
 }
 
-export default Home
+export default HomePage

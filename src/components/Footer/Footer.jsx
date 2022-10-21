@@ -1,6 +1,6 @@
 import React from 'react'
-import Brand from './Brand'
-import Social from '../assets/svg/Social'
+import Brand from '../Brand/Brand'
+import Icons from '../Icons'
 
 function Footer() {
 	return (
@@ -12,16 +12,16 @@ function Footer() {
 				</p>
 				<span className='inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start'>
 					<a href='/' className='text-gray-500'>
-						<Social.Facebook />
+						<Icons.Social.Facebook />
 					</a>
 					<a href='/' className='ml-3 text-gray-500'>
-						<Social.Twitter />
+						<Icons.Social.Twitter />
 					</a>
 					<a href='/' className='ml-3 text-gray-500'>
-						<Social.Instagram />
+						<Icons.Social.Instagram />
 					</a>
 					<a href='/' className='ml-3 text-gray-500'>
-						<Social.Linkdin />
+						<Icons.Social.Linkdin />
 					</a>
 				</span>
 			</div>
