@@ -28,7 +28,7 @@ The project has the following functionality:
 2. Install NPM packages
    ```sh
    cd gif-me-giphy
-   npm install --force
+   npm install
    ```
 
 ### Available Scripts
