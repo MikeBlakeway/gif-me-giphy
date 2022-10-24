@@ -1,5 +1,5 @@
 import React from 'react'
-import ErrorSafeImage from '../ErrorSafeImage/ErrorSafeImage'
+import ErrorSafeImage from '../../components/ErrorSafeImage/ErrorSafeImage'
 
 const ImageGallery = ({imageArray}) => {
 	return (
@@ -11,9 +11,9 @@ const ImageGallery = ({imageArray}) => {
 				 *  the array, we pass its values into a
 				 * child GalleryImage component
 				 */
-				imageArray.map(({images, id, title}) => (
-					// each child component must hold a unique key value.
-					<div className='relative' key={id}>
+				imageArray.map(({images, id, title}, index) => (
+					// each child component must hold a unique key value. We use index in case of duplication from the api.
+					<div className='relative' key={index}>
 						<a
 							href={`/gif/${id}`}
 							className='absolute inset-0 z-10 bg-emerald-400 text-center flex flex-col items-center justify-center opacity-0 hover:opacity-100 duration-300 p-3'

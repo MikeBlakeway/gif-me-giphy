@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {fetchByQuery} from '../../store/images/imagesSlice'
 import ImageGallery from '../ImageGallery/ImageGallery'
 
 const Search = () => {
+	const dispatch = useDispatch()
 	/**
 	 * We want to keep a brief history of the query text that the user has entered.
 	 * This is because we are rendering the search terms conditionally after submission.
@@ -11,24 +14,12 @@ const Search = () => {
 		last: '',
 	})
 
-	// this is where will store our api response
-	const [searchGifData, setSearchGifData] = useState('')
+	const {images} = useSelector(state => state)
 
-	// we can dynamically set the url for fetching the searched text by concatenaating it into the url string using backticks
-	const searchURI = `https://api.giphy.com/v1/gifs/search?api_key=frBBtYTudXylTnbq5jO5taWbE16cMhIb&q=${query.current}&limit=9&offset=0&rating=g&lang=en`
-
-	/**
-	 * Trigger the fetch call on submit, rather than within a useEffect hook as the value of the input changes.
-	 * This is to prevent over calling the api.
-	 */
 	const handleSubmit = e => {
 		// prevent the page from refreshing on submit event
 		e.preventDefault()
-		// pass our dynamic string as the endpoint
-		fetch(searchURI)
-			.then(response => response.json())
-			.then(gifs => setSearchGifData(gifs.data))
-			.catch(err => console.log(err))
+		dispatch(fetchByQuery(query.current))
 		// capture the input value to render in the results
 		setQuery({last: query.current, current: ''})
 	}
@@ -68,15 +59,18 @@ const Search = () => {
 					</span>
 				</form>
 			</div>
-			{query.last && (
-				<h3 className='title-font text-3xl mb-4 font-medium text-slate-600'>
-					Results for
-					<span className='text-emerald-400 ml-2'>{query.last}</span>
-				</h3>
+			{images.status === 'succeeded' && (
+				<>
+					<h3 className='title-font text-3xl mb-4 font-medium text-slate-600'>
+						Results for
+						<span className='text-emerald-400 ml-2'>{query.last}</span>
+					</h3>
+
+					<div className='pb-12'>
+						<ImageGallery imageArray={images.gifs.data} />
+					</div>
+				</>
 			)}
-			<div className='pb-12'>
-				{searchGifData && <ImageGallery imageArray={searchGifData} />}
-			</div>
 		</>
 	)
 }
