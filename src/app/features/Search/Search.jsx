@@ -1,6 +1,10 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {fetchByQuery} from '../../store/images/imagesSlice'
+import {
+	fetchByQuery,
+	selectImages,
+	selectImagesFetchStatus,
+} from '../../store/images/imagesSlice'
 import ImageGallery from '../ImageGallery/ImageGallery'
 
 const Search = () => {
@@ -14,7 +18,8 @@ const Search = () => {
 		last: '',
 	})
 
-	const {images} = useSelector(state => state)
+	const {data: gifs} = useSelector(selectImages)
+	const fetchStatus = useSelector(selectImagesFetchStatus)
 
 	const handleSubmit = e => {
 		// prevent the page from refreshing on submit event
@@ -59,7 +64,7 @@ const Search = () => {
 					</span>
 				</form>
 			</div>
-			{images.status === 'succeeded' && (
+			{fetchStatus === 'succeeded' && (
 				<>
 					<h3 className='title-font text-3xl mb-4 font-medium text-slate-600'>
 						Results for
@@ -67,7 +72,7 @@ const Search = () => {
 					</h3>
 
 					<div className='pb-12'>
-						<ImageGallery imageArray={images.gifs.data} />
+						<ImageGallery imageArray={gifs} />
 					</div>
 				</>
 			)}

@@ -36,4 +36,8 @@ export const imagesSlice = createSlice({
 			})
 	},
 })
+
+export const selectImages = state => state.images.gifs
+export const selectImagesFetchStatus = state => state.images.status
+
 export default imagesSlice.reducer
